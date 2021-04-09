@@ -7,26 +7,49 @@ public class Car : MonoBehaviour
 
   public GameObject Bullet;
 
-    // Start is called before the first frame update
-  void Start()
+  [SerializeField]
+  private Rigidbody _rgdb;
+  [SerializeField]
+  private float _carSpeed;
+  [SerializeField]
+  private float _turnSpeed;
+  [SerializeField]
+  private Transform _shotPlace;
+
+  private void Awake()
   {
-        
+    _rgdb = GetComponent<Rigidbody>();
+
+    if (!_shotPlace)
+      _shotPlace = transform.Find("shotPlace");
   }
 
-    // Update is called once per frame
-  void Update()
+  private void Update()
   {
-    if (Input.GetKey(KeyCode.W))
-      transform.Translate(transform.forward * Time.deltaTime * 10);
-    else if (Input.GetKey(KeyCode.S))
-      transform.Translate(transform.forward * -1 * Time.deltaTime * 10);
-
     if (Input.GetKeyDown(KeyCode.Space))
     {
-      GameObject b = Instantiate(Bullet);
-      b.transform.position = transform.position;
+      GameObject b = Instantiate(
+                                  Bullet, 
+                                  _shotPlace.position, 
+                                  transform.rotation
+                                );
     }
+  }
 
+  void FixedUpdate()
+  {
+
+    if (Input.GetKey(KeyCode.W))
+      _rgdb.velocity = transform.forward * _carSpeed;
+    else if (Input.GetKey(KeyCode.S))
+      _rgdb.velocity = transform.forward * -1 * _carSpeed;
+    
+    if (Input.GetKey(KeyCode.A))
+      _rgdb.angularVelocity = Vector3.up * _turnSpeed * -1;
+    else if (Input.GetKey(KeyCode.D))
+      _rgdb.angularVelocity = Vector3.up * _turnSpeed;
+    else
+      _rgdb.angularVelocity = Vector3.zero;
   }
 
 }

@@ -13,6 +13,6 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
   void Update()
   {
-    transform.Translate(transform.forward * Time.deltaTime * 30);
+    transform.Translate(transform.forward * Time.deltaTime * 30, Space.World);
   }
 }
