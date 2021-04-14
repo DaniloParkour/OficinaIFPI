@@ -52,4 +52,17 @@ public class Car : MonoBehaviour
       _rgdb.angularVelocity = Vector3.zero;
   }
 
+  private void OnTriggerEnter(Collider other)
+  {
+    if(other.gameObject.tag.Equals("Colect"))
+    {
+      Destroy(other.gameObject);
+    } else if (other.gameObject.tag.Equals("Cone"))
+    {
+      other.gameObject.transform.Translate(0, -0.2f, 0);
+      other.gameObject.transform.Rotate( 110, 0, 0);
+      Destroy(other);
+    }
+  }
+
 }
