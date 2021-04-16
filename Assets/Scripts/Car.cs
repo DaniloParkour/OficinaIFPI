@@ -6,6 +6,7 @@ public class Car : MonoBehaviour
 {
 
   public GameObject Bullet;
+  public int Hp;
 
   [SerializeField]
   private Rigidbody _rgdb;
@@ -16,16 +17,30 @@ public class Car : MonoBehaviour
   [SerializeField]
   private Transform _shotPlace;
 
+  private bool _canMove;
+
   private void Awake()
   {
     _rgdb = GetComponent<Rigidbody>();
 
     if (!_shotPlace)
       _shotPlace = transform.Find("shotPlace");
+
+    _canMove = true;
   }
 
   private void Update()
   {
+
+    if (Hp <= 0 && _canMove)
+    {
+      _canMove = false;
+      Debug.Log("Open GameOver Panel!");
+    }
+
+    if (!_canMove)
+      return;
+
     if (Input.GetKeyDown(KeyCode.Space))
     {
       GameObject b = Instantiate(
@@ -38,6 +53,9 @@ public class Car : MonoBehaviour
 
   void FixedUpdate()
   {
+
+    if (!_canMove)
+      return;
 
     if (Input.GetKey(KeyCode.W))
       _rgdb.velocity = transform.forward * _carSpeed;

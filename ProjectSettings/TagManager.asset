@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cone
   - Colect
+  - Car
   layers:
   - Default
   - TransparentFX

@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    // Start is called before the first frame update
-  void Start()
-  {
-        
-  }
 
-    // Update is called once per frame
+  public float Speed;
+
   void Update()
   {
-    transform.Translate(transform.forward * Time.deltaTime * 30, Space.World);
+    transform.Translate(transform.forward * Time.deltaTime * Speed, Space.World);
   }
+
+  private void OnTriggerEnter(Collider other)
+  {
+
+    Car c = other.GetComponent<Car>();
+    if (c)
+      c.Hp -= 2;
+
+    if(other.gameObject.tag.Equals("Car"))
+      other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 40);
+
+    Destroy(gameObject);
+  }
+
 }
