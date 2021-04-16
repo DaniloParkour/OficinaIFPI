@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: d67dde1df15a18243bd4800a4c7b80a6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Antonio
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a4f5aa12796aeec44a2cb112f850143f, type: 3}
+  - {fileID: 12800000, guid: 74fa1bc23b739d140b4b2a743d6ef46b, type: 3}
+  - {fileID: 12800000, guid: d0a2bbcff3313a84ab2844b30adfcce7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

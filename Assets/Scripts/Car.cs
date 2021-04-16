@@ -8,6 +8,8 @@ public class Car : MonoBehaviour
   public GameObject Bullet;
   public int Hp;
 
+  public GameObject EndPanel;
+
   [SerializeField]
   private Rigidbody _rgdb;
   [SerializeField]
@@ -35,7 +37,7 @@ public class Car : MonoBehaviour
     if (Hp <= 0 && _canMove)
     {
       _canMove = false;
-      Debug.Log("Open GameOver Panel!");
+      EndPanel.SetActive(true);
     }
 
     if (!_canMove)
